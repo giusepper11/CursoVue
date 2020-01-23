@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Curso Vue</title>
+    <script src="https://unpkg.com/vue"></script>
+    <style>
+      #app div {
+        display: inline-block;
+        margin-right: 10px;
+        background-color: gray;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div style="width: 200px; height: 200px;" :style="estilosCSS"></div>
+      <div
+        style="width: 200px; height: 200px;"
+        :style="[estilosCSS, {border : '2px solid black'}]"
+      ></div>
+
+      <div
+        style="width: 200px; height: 200px;"
+        :style="[estilosCSS, {display: ['-webkit-box', '-ms-flexbox', 'flexbox']}]"
+      ></div>
+
+      <input type="text" placeholder="Cor" v-model="cor" />
+      <input type="text" placeholder="Tamanho em px" v-model.number="tamanho" />
+    </div>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          cor: "",
+          tamanho: 200
+        },
+        computed: {
+          estilosCSS() {
+            return {
+              backgroundColor: this.cor,
+              height: this.tamanho + "px"
+            };
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

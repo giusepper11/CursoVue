@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Curso VueJS</title>
+    <script src="https://unpkg.com/vue" type="text/javascript"></script>
+  </head>
+  <body>
+    <div id="app">
+      <p>Nome: {{nomeCompleto}}</p>
+      <button @click='alterarNome'>Alterar nome</button>
+    </div>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          primeiroNome: "Giuseppe",
+          ultimoNome: "Rosa",
+          // nomeCompleto: "Giuseppe Rosa"
+        },
+        computed: {
+          nomeCompleto(){
+            return `${this.primeiroNome} ${this.ultimoNome}`;
+          }
+        },
+        // watch: {
+        //   primeiroNome(novoPrimeiroNome, AntigoPrimeiroNome) {
+        //     this.nomeCompleto = `${novoPrimeiroNome} ${this.ultimoNome}`;
+        //   },
+        //   ultimoNome(novoUltimoNome, AntigoUltimoNome) {
+        //     this.nomeCompleto = `${this.primeiroNome} ${novoUltimoNome}`;
+        //   }
+        // },
+        methods:{
+          alterarNome(event){
+            this.primeiroNome = 'Rosa'
+            this.ultimoNome = 'Giuseppe'
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

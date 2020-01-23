@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Curso Vue</title>
+    <script src="https://unpkg.com/vue"></script>
+    <style>
+      .caixa {
+        width: 200px;
+        height: 200px;
+        display: inline-block;
+        margin-right: 10px;
+        background: #000;
+      }
+      .coral {
+        background-color: coral;
+      }
+      .verde {
+        background-color: green;
+      }
+      .azul {
+        background-color: blue;
+      }
+      .circulo {
+        border-radius: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div
+        class="caixa"
+        :class="{coral : aplicarClasse}"
+        @click="aplicarClasse = !aplicarClasse"
+      ></div>
+      <div class="caixa" :class="nomeClasse"></div>
+      <div class="caixa" :class="classesCSS" @click="aplicarClasse = !aplicarClasse"></div>
+      <input
+        type="text"
+        v-model="nomeClasse"
+        placeholder="Nome da classe CSS"
+      />
+    </div>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          aplicarClasse: false,
+          nomeClasse: ""
+        },
+        computed: {
+          classesCSS() {
+            return {
+              azul: this.aplicarClasse,
+              circulo: this.aplicarClasse,
+              verde: !this.aplicarClasse
+            };
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
