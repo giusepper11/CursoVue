@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Curso VueJS</title>
+    <script src="https://unpkg.com/vue"></script>
+  </head>
+  <body>
+    <div id="app">
+      <p v-if="nota === 'A'">Parabéns, aprovado com A</p>
+      <p v-else-if="nota === 'B'">Voce tirou um "B", mas pode melhorar!</p>
+      <p v-else-if="nota === 'C'">
+        Voce precisa melhorar, estude mais, Sua nota: "C"
+      </p>
+      <p v-else>Nota ainda não publicada</p>
+      <input type="text" v-model.upper="nota" placeholder="Nota" />
+
+      <script>
+        new Vue({
+          el: "#app",
+          data: {
+            nota: ""
+          }
+        });
+      </script>
+    </div>
+  </body>
+</html>
