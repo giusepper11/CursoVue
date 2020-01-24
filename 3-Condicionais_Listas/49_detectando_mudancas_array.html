@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Curso VueJS</title>
+    <script src="https://unpkg.com/vue"></script>
+    <style>
+      .separador {
+        list-style-type: none;
+        border-bottom: 1px solid #000;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <p>Produtos:</p>
+      <ul>
+        <li v-for="produto in produtos" :key="produto.id">{{produto.nome}}</li>
+      </ul>
+      <button @click="adicionarProdutos">Adicionar Produtos</button>
+      <button @click="produtos = produtos.splice(0, 4)">
+        Substituir Array
+      </button>
+      <button @click="substituirProduto">
+        Substituir Produto
+      </button>
+    </div>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          produtos: [
+            { id: 1, nome: "Monitor" },
+            { id: 2, nome: "Teclado" },
+            { id: 3, nome: "Mouse" },
+            { id: 4, nome: "Processador" }
+          ]
+        },
+        methods: {
+          adicionarProdutos(ev) {
+            var id = this.produtos.length + 1;
+            this.produtos.push({ id: id, nome: `Produto ${id}` });
+          },
+          substituirProduto(ev){
+            var tamanho = this.produtos.length;
+            var indice = Math.round(tamanho/2)
+            console.log(tamanho, indice);
+            let novoProduto = {id: indice, nome:`Produto: ${indice}`}
+            // this.produtos[indice] = novoProduto  //  
+            Vue.set(this,produtos, indice)
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
