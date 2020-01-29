@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Curso VueJS</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <div id="app">
+        <h2>Instancia Vue</h2>
+        <button @click="mostrar = !mostrar">Toggle</button>
+        <p v-if="mostrar">{{titulo}}</p>
+    </div>
+    <script>
+
+        var data = {
+                titulo: "Curso de VueJS",
+                mostrar: true
+            }
+
+        var vm = new Vue({
+            el:'#app',
+            data: data
+        })
+
+        console.log(vm);
+        console.log(vm.$el === document.getElementById("app"));
+        console.log(vm.$data === data);
+        
+        setTimeout(() => {
+            data['titulo'] = "VueJS"
+        }, 3000);
+        
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Curso VueJS</title>
+    <script src="https://unpkg.com/vue"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h2>{{titulo}}</h2>
+      <button @click="alterarTitulo">Alterar o Titulo</button>
+      <button @click="destruirInstancia">Destruir instancia</button>
+    </div>
+    <script>
+      var vm = new Vue({
+        // el: "#app",
+        data: {
+          titulo: "Curso de VueJS"
+        },
+        methods: {
+          alterarTitulo(ev){
+            this.titulo = `Curso de VueJS - Alterado`
+          },
+          destruirInstancia(ev){
+            this.$destroy()
+          }
+        },
+        beforeCreate: () => {
+          console.log("01 - BeforeCreate");
+        },
+        created: () => {
+          console.log("02 - created");
+        },
+        beforeMount: () => {
+          console.log("03 - beforeMount");
+        },
+        mounted: () => {
+          console.log("04 - mounted");
+        },
+        beforeUpdate: () => {
+          console.log("05 - BeforeUpdate");
+        },
+        updated: function () {
+          console.log("06 - Updated");
+                    
+        },
+        beforeDestroy: () => {
+          console.log("07 - BeforeDestroy");
+        },
+        destroyed: function () {
+          console.log("07 - Destroyed");
+                    
+        },
+      });
+
+      setTimeout(() => {
+        vm.$mount('#app')
+      }, 3000);
+    </script>
+  </body>
+</html>

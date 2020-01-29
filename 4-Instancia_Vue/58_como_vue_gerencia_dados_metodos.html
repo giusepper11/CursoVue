@@ -1,35 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Curso Vuejs</title>
     <script src="https://unpkg.com/vue"></script>
-</head>
-<body>
-
+  </head>
+  <body>
     <div id="app">
-        <h2>Instancia Vue</h2>
-        <p>{{titulo}}</p>
+      <h2>Instancia Vue</h2>
+      <p>{{titulo}}</p>
 
-        <h3>Propriedades Dinamicas</h3>
+      <h3>Propriedades Dinamicas</h3>
+      <p>{{novaPropriedade}}</p>
+      <p>{{usuario}}</p>
     </div>
 
     <script>
-        var vm = new Vue({
-            el: '#app',
-            data: {
-                titulo: 'Curso de VueJS',
-                usuario : {},
-            }
-        })
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          titulo: "Curso de VueJS",
+          usuario: {}
+        }
+      });
 
-        // vm.novaPropriedade = 'Nova propriedade' //Não reativo
-        console.log(vm);
-        
-
+      // vm.novaPropriedade = 'Nova propriedade' //Não reativo
+      console.log(vm);
+      setTimeout(()=>{
+        vm.novaPropriedade = 'Nova propriedade' // errado
+        vm.$set(vm.usuario, 'nome', 'Giuseppe Rosa')
+        setTimeout(()=>{
+            vm.novaPropriedade = 'Nova propriedade alterada' //errado
+            Vue.set(vm.usuario, 'email', 'giuseppe@email.com')
+        }, 3000)
+      }, 3000)
     </script>
-    
-</body>
+  </body>
 </html>
